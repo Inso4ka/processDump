@@ -16,6 +16,9 @@
     <Filter Include="UI">
       <UniqueIdentifier>{9d040c8d-ff58-417e-9251-506cd0718e3b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Process">
+      <UniqueIdentifier>{9f443bd3-8ede-4d45-ad5d-f0c70a09fcdf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -27,6 +30,12 @@
     <ClCompile Include="MainFrame.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="process.cpp">
+      <Filter>Process</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectDialog.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="C:\Users\MSI\Desktop\.clang-format" />
@@ -35,10 +44,16 @@
     <ClInclude Include="definitions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="App.hpp">
+    <ClInclude Include="App.h">
       <Filter>UI</Filter>
     </ClInclude>
-    <ClInclude Include="MainFrame.hpp">
+    <ClInclude Include="MainFrame.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="process.hpp">
+      <Filter>Process</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectDialog.h">
       <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>

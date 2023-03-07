@@ -1,47 +1,45 @@
 #include <wx/wx.h>
 #include <wx/sizer.h>
-#include "MainFrame.hpp"
+#include "MainFrame.h"
+#include "SelectDialog.h"
+#include "process.hpp"
 
-MainFrame::MainFrame() : wxFrame(nullptr, wxID_ANY, "Hello World")
+MainFrame::MainFrame(const wxString& title) : wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxSize(500, 300))
 {
-    wxMenu* menuFile = new wxMenu;
-    menuFile->Append(1, "&Hello...\tCtrl-H", "Help string shown in status bar for this menu item");
-    menuFile->AppendSeparator();
-    menuFile->Append(wxID_EXIT);
+    m_procSelectWindow = new SelectDialog("Test", this);
 
-    wxMenu* menuHelp = new wxMenu;
-    menuHelp->Append(wxID_ABOUT);
+    m_selectedProcNameText = new wxStaticText(this, wxID_ANY, "Selected process:");
+    m_selectedProcNameLine = new wxTextCtrl(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_READONLY);
+    m_selectProcButton     = new wxButton(this, wxID_ANY, "Select", wxDefaultPosition, wxSize(80, 25));
 
-    wxMenuBar* menuBar = new wxMenuBar;
-    menuBar->Append(menuFile, "&File");
-    menuBar->Append(menuHelp, "&Help");
+    wxBoxSizer* processSelectSizer = new wxBoxSizer(wxHORIZONTAL);
+    processSelectSizer->Add(m_selectedProcNameText, 0, wxTOP, 4);
+    processSelectSizer->Add(m_selectedProcNameLine, 1, wxTOP, 1);
+    processSelectSizer->Add(m_selectProcButton, 0, wxLEFT, 8);
+    processSelectSizer->Add(5, 0);
 
-    wxPanel* panel = new wxPanel(this);
+    wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
+    mainSizer->Add(processSelectSizer, 0, wxEXPAND | wxALL, 5);
+    SetSizer(mainSizer);
+    Centre();
 
-    wxButton* button = new wxButton(panel, 100, "Choose directory", wxPoint(50, 50), wxSize(100, 25));
-
-    SetMenuBar(menuBar);
-
-    CreateStatusBar();
-    SetStatusText("Welcome to wxWidgets!");
-
-    Bind(wxEVT_MENU, &MainFrame::OnHello, this, 1);
-    Bind(wxEVT_MENU, &MainFrame::OnAbout, this, wxID_ABOUT);
-    Bind(wxEVT_MENU, &MainFrame::OnExit, this, wxID_EXIT);
-    Bind(wxEVT_BUTTON, &MainFrame::OnButtonClicked, this, 100);
+    m_selectProcButton->Bind(wxEVT_BUTTON, &MainFrame::OnSelectButtonClicked, this);
 }
 
-void MainFrame::OnExit(wxCommandEvent& event)
+void MainFrame::SetSelectedProcess(const Process& process)
 {
-    Close(true);
+    m_selectedProcess = process;
+    m_selectedProcNameLine->Clear();
+    m_selectedProcNameLine->AppendText(process.name);
 }
 
-void MainFrame::OnAbout(wxCommandEvent& event)
+void MainFrame::OnSelectButtonClicked(wxCommandEvent& event)
 {
-    wxMessageBox("This is a wxWidgets Hello World example", "About Hello World", wxOK | wxICON_INFORMATION);
+    m_procSelectWindow->Centre();
+    m_procSelectWindow->ShowModal();
 }
 
-void MainFrame::OnHello(wxCommandEvent& event)
+MainFrame::~MainFrame()
 {
-    wxLogMessage("hello :)");
+    DESTROY_WXWIDGET(m_procSelectWindow);
 }
