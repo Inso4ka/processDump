@@ -11,4 +11,5 @@ class MainFrame : public wxFrame
     void OnHello(wxCommandEvent& event);
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
+    void OnButtonClicked(wxCommandEvent& event);
 };

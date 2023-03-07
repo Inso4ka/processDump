@@ -16,6 +16,10 @@ MainFrame::MainFrame() : wxFrame(nullptr, wxID_ANY, "Hello World")
     menuBar->Append(menuFile, "&File");
     menuBar->Append(menuHelp, "&Help");
 
+    wxPanel* panel = new wxPanel(this);
+
+    wxButton* button = new wxButton(panel, 100, "Choose directory", wxPoint(50, 50), wxSize(100, 25));
+
     SetMenuBar(menuBar);
 
     CreateStatusBar();
@@ -24,6 +28,7 @@ MainFrame::MainFrame() : wxFrame(nullptr, wxID_ANY, "Hello World")
     Bind(wxEVT_MENU, &MainFrame::OnHello, this, 1);
     Bind(wxEVT_MENU, &MainFrame::OnAbout, this, wxID_ABOUT);
     Bind(wxEVT_MENU, &MainFrame::OnExit, this, wxID_EXIT);
+    Bind(wxEVT_BUTTON, &MainFrame::OnButtonClicked, this, 100);
 }
 
 void MainFrame::OnExit(wxCommandEvent& event)
@@ -38,5 +43,5 @@ void MainFrame::OnAbout(wxCommandEvent& event)
 
 void MainFrame::OnHello(wxCommandEvent& event)
 {
-    wxLogMessage("Hello world from wxWidgets!");
+    wxLogMessage("hello :)");
 }
