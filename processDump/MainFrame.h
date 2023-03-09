@@ -17,9 +17,16 @@ class MainFrame : public wxFrame
   private:
     wxTextCtrl*   m_selectedProcNameLine{};
     wxStaticText* m_selectedProcNameText;
+    wxTextCtrl*   m_selectedDirNameLine{};
+    wxStaticText* m_selectedDirNameText;
     wxButton*     m_selectProcButton;
+    wxButton*     m_selectDirButton;
+    wxButton*     m_dumpButton;
     SelectDialog* m_procSelectWindow{};
+    wxDirDialog*  m_dirSelectWindow{};
     void          OnSelectButtonClicked(wxCommandEvent& event);
+    void          OnDumpButtonClicked(wxCommandEvent& event);
+    void          OnDirSelectButtonClicked(wxCommandEvent& event);
     Process       m_selectedProcess{};
 
   public:

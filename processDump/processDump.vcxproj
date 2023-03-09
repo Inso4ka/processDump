@@ -74,7 +74,7 @@
     <LibraryPath>D:\wx\lib\vc_lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LibraryPath>D:\wx\lib\vc_lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>D:\wx\lib\vc_x64_lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -121,6 +121,8 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(WXWIN)\lib\vc_x64_lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);dbghelp.lib</AdditionalDependencies>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -143,6 +145,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="App.cpp" />
+    <ClCompile Include="dumper.cpp" />
+    <ClCompile Include="DumpProcess.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainFrame.cpp" />
     <ClCompile Include="process.cpp" />
@@ -154,6 +158,7 @@
   <ItemGroup>
     <ClInclude Include="App.h" />
     <ClInclude Include="definitions.h" />
+    <ClInclude Include="dumper.hpp" />
     <ClInclude Include="MainFrame.h" />
     <ClInclude Include="process.hpp" />
     <ClInclude Include="SelectDialog.h" />

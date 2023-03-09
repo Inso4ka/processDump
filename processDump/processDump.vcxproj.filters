@@ -36,6 +36,12 @@
     <ClCompile Include="SelectDialog.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="dumper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DumpProcess.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="C:\Users\MSI\Desktop\.clang-format" />
@@ -55,6 +61,9 @@
     </ClInclude>
     <ClInclude Include="SelectDialog.h">
       <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="dumper.hpp">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
